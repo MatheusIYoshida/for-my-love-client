@@ -1,0 +1,34 @@
+<main class="player-page" aria-label="Player do casal">
+  <section class="player-page__shell">
+    <header class="player-page__header">
+      <button class="player-page__icon" type="button" aria-label="Cartas">✉</button>
+
+      <div class="player-page__header-copy">
+        <span>Tocando da playlist</span>
+        <strong>Nossa história</strong>
+      </div>
+
+      <button class="player-page__icon" type="button" aria-label="Mais opções">⋮</button>
+    </header>
+
+    <app-photo-carousel />
+
+    <section class="player-page__song" aria-label="Música atual">
+      <div class="player-page__song-copy">
+        <p class="player-page__song-line">
+          Pode passar mil anos você vai me amar<br>
+          E eu vou ser pra sempre seu
+        </p>
+
+        <h1 class="player-page__song-title">Mil Anos</h1>
+        <p class="player-page__song-artist">Jorge &amp; Mateus</p>
+      </div>
+
+      <span class="player-page__saved" aria-label="Salvo">✓</span>
+    </section>
+
+    <app-relationship-counter />
+    <app-music-controls />
+    <app-lyrics-panel />
+  </section>
+</main>

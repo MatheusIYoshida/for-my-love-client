@@ -1,0 +1,28 @@
+.relationship-counter {
+  padding: 16px;
+  border: 1px solid rgba(255, 250, 247, 0.16);
+  border-radius: 8px;
+  background: rgba(255, 250, 247, 0.08);
+
+  &__label {
+    display: block;
+    color: rgba(255, 250, 247, 0.7);
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  &__time {
+    display: block;
+    margin-top: 8px;
+    font-size: 1.24rem;
+    font-weight: 900;
+    line-height: 1.25;
+  }
+
+  &__detail {
+    margin: 8px 0 0;
+    color: rgba(255, 250, 247, 0.68);
+  }
+}

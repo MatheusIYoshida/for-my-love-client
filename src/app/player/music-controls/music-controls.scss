@@ -1,0 +1,56 @@
+.music-controls {
+  padding: 24px 0 18px;
+
+  &__progress {
+    height: 5px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: rgba(255, 250, 247, 0.3);
+  }
+
+  &__progress span {
+    display: block;
+    width: 42%;
+    height: 100%;
+    background: #fffaf7;
+  }
+
+  &__time {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+    color: rgba(255, 250, 247, 0.68);
+    font-size: 0.82rem;
+  }
+
+  &__actions {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+  }
+
+  &__item {
+    min-height: 48px;
+    display: grid;
+    place-items: center;
+    border: 0;
+    color: #fffaf7;
+    background: transparent;
+    font: inherit;
+    font-size: 1.55rem;
+    cursor: pointer;
+  }
+
+  &__item--main {
+    width: 72px;
+    height: 72px;
+    justify-self: center;
+    border-radius: 999px;
+    color: #0d0c10;
+    background: #fffaf7;
+    font-size: 2rem;
+    font-weight: 900;
+  }
+}
