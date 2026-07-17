@@ -1,4 +1,4 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component, OnDestroy, computed, signal } from '@angular/core';
 
 type CounterValue = {
   years: number;
@@ -14,14 +14,15 @@ type CounterValue = {
   templateUrl: './relationship-counter.html',
   styleUrl: './relationship-counter.scss',
 })
-export class RelationshipCounter {
+export class RelationshipCounter implements OnDestroy {
   private readonly firstDate = new Date('2024-09-27T00:00:00-03:00');
   private readonly now = signal(new Date());
+  private readonly intervalId = window.setInterval(() => this.now.set(new Date()), 1000);
 
   protected readonly counter = computed(() => this.calculateCounter(this.now()));
 
-  constructor() {
-    setInterval(() => this.now.set(new Date()), 1000);
+  ngOnDestroy(): void {
+    window.clearInterval(this.intervalId);
   }
 
   private calculateCounter(now: Date): CounterValue {

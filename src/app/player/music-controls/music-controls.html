@@ -1,6 +1,16 @@
 <section class="music-controls" aria-label="Controles">
+  <audio
+    #audioPlayer
+    class="music-controls__audio"
+    src="assets/audio/Music.mp3"
+    preload="metadata"
+    (loadedmetadata)="updateDuration()"
+    (timeupdate)="updateCurrentTime()"
+    (ended)="handleAudioEnded()"
+  ></audio>
+
   <div class="music-controls__progress">
-    <span></span>
+    <span [style.width]="progress()"></span>
   </div>
 
   <div class="music-controls__time">
@@ -9,10 +19,61 @@
   </div>
 
   <div class="music-controls__actions">
-    <button class="music-controls__item" type="button" aria-label="Aleatório">⤨</button>
-    <button class="music-controls__item" type="button" aria-label="Voltar">⏮</button>
-    <button class="music-controls__item music-controls__item--main" type="button" aria-label="Pausar">Ⅱ</button>
-    <button class="music-controls__item" type="button" aria-label="Avançar">⏭</button>
-    <button class="music-controls__item" type="button" aria-label="Repetir">↻</button>
+    <button class="music-controls__item" type="button" aria-label="Aleatório" disabled>
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="m18 14 4 4-4 4"></path>
+        <path d="m18 2 4 4-4 4"></path>
+        <path d="M2 18h1.4c1.3 0 2.6-.5 3.5-1.5L17 6"></path>
+        <path d="M2 6h1.4c1.3 0 2.6.5 3.5 1.5l1.7 1.7"></path>
+        <path d="M14.5 15.5 17 18"></path>
+      </svg>
+    </button>
+
+    <button class="music-controls__item" type="button" aria-label="Voltar 10 segundos" (click)="seekBackward()">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="m11 19-9-7 9-7v14Z"></path>
+        <path d="m22 19-9-7 9-7v14Z"></path>
+      </svg>
+    </button>
+
+    <button
+      class="music-controls__item music-controls__item--main"
+      type="button"
+      [attr.aria-label]="isPlaying() ? 'Pausar música' : 'Tocar música'"
+      (click)="toggleAudio()"
+    >
+      @if (isPlaying()) {
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M10 4H6v16h4V4Z"></path>
+          <path d="M18 4h-4v16h4V4Z"></path>
+        </svg>
+      } @else {
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="m8 5 12 7-12 7V5Z"></path>
+        </svg>
+      }
+    </button>
+
+    <button class="music-controls__item" type="button" aria-label="Avançar 10 segundos" (click)="seekForward()">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="m13 19 9-7-9-7v14Z"></path>
+        <path d="m2 19 9-7-9-7v14Z"></path>
+      </svg>
+    </button>
+
+    <button
+      class="music-controls__item"
+      [class.music-controls__item--active]="isLooping()"
+      type="button"
+      aria-label="Repetir música"
+      (click)="toggleLoop()"
+    >
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="m17 2 4 4-4 4"></path>
+        <path d="M3 11V9a3 3 0 0 1 3-3h15"></path>
+        <path d="m7 22-4-4 4-4"></path>
+        <path d="M21 13v2a3 3 0 0 1-3 3H3"></path>
+      </svg>
+    </button>
   </div>
 </section>

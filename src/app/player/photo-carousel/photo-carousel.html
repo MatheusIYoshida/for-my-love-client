@@ -1,9 +1,26 @@
-<section class="photo-carousel" aria-label="Carrossel de fotos">
-  <div class="photo-carousel__placeholder">foto do casal</div>
+<section
+  class="photo-carousel"
+  aria-label="Carrossel de fotos"
+  (pointerdown)="handlePointerStart($event)"
+  (pointerup)="handlePointerEnd($event)"
+  (pointercancel)="handlePointerEnd($event)"
+>
+  <div class="photo-carousel__track" [style.transform]="translateX()">
+    @for (photo of photos; track photo.src) {
+      <img class="photo-carousel__image" [src]="photo.src" [alt]="photo.alt">
+    }
+  </div>
 
-  <div class="photo-carousel__dots" aria-hidden="true">
-    <span></span>
-    <span></span>
-    <span></span>
+  <div class="photo-carousel__dots" aria-label="Selecionar foto">
+    @for (photo of photos; track photo.src; let index = $index) {
+      <button
+        class="photo-carousel__dot"
+        [class.photo-carousel__dot--active]="index === currentPhotoIndex()"
+        type="button"
+        [attr.aria-label]="'Mostrar foto ' + (index + 1)"
+        [attr.aria-current]="index === currentPhotoIndex() ? 'true' : null"
+        (click)="goToPhoto(index)"
+      ></button>
+    }
   </div>
 </section>

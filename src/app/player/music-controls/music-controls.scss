@@ -1,6 +1,10 @@
 .music-controls {
   padding: 24px 0 18px;
 
+  &__audio {
+    display: none;
+  }
+
   &__progress {
     height: 5px;
     overflow: hidden;
@@ -41,6 +45,21 @@
     font: inherit;
     font-size: 1.55rem;
     cursor: pointer;
+
+    &:disabled {
+      opacity: 0.42;
+      cursor: default;
+    }
+  }
+
+  &__item svg {
+    width: 24px;
+    height: 24px;
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 2.2;
   }
 
   &__item--main {
@@ -52,5 +71,16 @@
     background: #fffaf7;
     font-size: 2rem;
     font-weight: 900;
+
+    svg {
+      width: 30px;
+      height: 30px;
+      fill: currentColor;
+      stroke: none;
+    }
+  }
+
+  &__item--active {
+    color: #1ed760;
   }
 }
