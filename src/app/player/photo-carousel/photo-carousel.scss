@@ -1,0 +1,47 @@
+.photo-carousel {
+  position: relative;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 8px;
+  background:
+    linear-gradient(145deg, rgba(255, 250, 247, 0.18), transparent 34%),
+    radial-gradient(circle at 35% 20%, #f3c77a 0 8%, transparent 25%),
+    linear-gradient(135deg, #c85b72 0%, #5c2431 44%, #151015 100%);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.42);
+
+  &__placeholder {
+    position: absolute;
+    inset: 18px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(255, 250, 247, 0.18);
+    border-radius: 8px;
+    color: rgba(255, 250, 247, 0.68);
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  &__dots {
+    position: absolute;
+    right: 0;
+    bottom: 14px;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    gap: 7px;
+  }
+
+  &__dots span {
+    width: 7px;
+    height: 7px;
+    border-radius: 999px;
+    background: rgba(255, 250, 247, 0.44);
+
+    &:first-child {
+      width: 22px;
+      background: #fffaf7;
+    }
+  }
+}

@@ -6,7 +6,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "for-my-love-client-temp": {
+    "for-my-love-client": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -61,10 +61,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "for-my-love-client-temp:build:production"
+              "buildTarget": "for-my-love-client:build:production"
             },
             "development": {
-              "buildTarget": "for-my-love-client-temp:build:development"
+              "buildTarget": "for-my-love-client:build:development"
             }
           },
           "defaultConfiguration": "development"

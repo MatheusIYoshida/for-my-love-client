@@ -1,0 +1,24 @@
+<main class="welcome-page" aria-labelledby="welcome-title">
+  <div class="welcome-page__hearts" aria-hidden="true">
+    @for (heart of hearts; track heart) {
+      <span
+        [style.--heart-index]="heart"
+        [style.--heart-left.%]="heartPositions[heart % heartPositions.length]"
+        [style.--heart-drift.px]="heartDrifts[heart % heartDrifts.length]"
+        [style.--heart-duration.s]="heartDurations[heart % heartDurations.length]"
+        [style.--heart-size.px]="heartSizes[heart % heartSizes.length]"
+      ></span>
+    }
+  </div>
+
+  <section class="welcome-page__content">
+    <p class="welcome-page__eyebrow">playlist particular</p>
+
+    <h1 class="welcome-page__title" id="welcome-title">Nossa música está pronta</h1>
+
+    <a class="welcome-page__button" routerLink="/player">
+      <span class="welcome-page__button-icon" aria-hidden="true"></span>
+      Começar
+    </a>
+  </section>
+</main>

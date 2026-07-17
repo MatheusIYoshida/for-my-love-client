@@ -1,0 +1,100 @@
+.player-page {
+  min-height: 100dvh;
+  padding: 20px 18px 36px;
+  color: #fffaf7;
+  background:
+    radial-gradient(circle at 18% 0%, rgba(200, 91, 114, 0.5), transparent 24rem),
+    linear-gradient(180deg, #5c2431 0%, #21151d 46%, #0d0c10 100%);
+
+  &__shell {
+    width: min(100%, 430px);
+    margin: 0 auto;
+  }
+
+  &__header {
+    display: grid;
+    grid-template-columns: 44px 1fr 44px;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 18px;
+    text-align: center;
+  }
+
+  &__header-copy span {
+    display: block;
+    color: rgba(255, 250, 247, 0.7);
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  &__header-copy strong {
+    display: block;
+    margin-top: 4px;
+    font-size: 1rem;
+  }
+
+  &__icon {
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    border: 0;
+    border-radius: 999px;
+    color: #fffaf7;
+    background: transparent;
+    font: inherit;
+    font-size: 1.45rem;
+    cursor: pointer;
+  }
+
+  &__song {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 18px;
+    padding: 26px 0 18px;
+  }
+
+  &__song-line {
+    margin: 0 0 8px;
+    font-size: 0.96rem;
+    font-weight: 700;
+    line-height: 1.35;
+  }
+
+  &__song-title {
+    margin: 0 0 4px;
+    font-size: clamp(1.85rem, 10vw, 2.55rem);
+    font-weight: 800;
+    line-height: 0.96;
+    letter-spacing: 0;
+  }
+
+  &__song-artist {
+    margin: 0;
+    color: rgba(255, 250, 247, 0.72);
+    font-size: 0.95rem;
+  }
+
+  &__saved {
+    flex: 0 0 auto;
+    width: 30px;
+    height: 30px;
+    display: grid;
+    place-items: center;
+    margin-bottom: 13px;
+    border-radius: 999px;
+    color: #06140a;
+    background: #1ed760;
+    font-size: 1rem;
+    font-weight: 900;
+  }
+}
+
+@media (min-width: 900px) {
+  .player-page {
+    padding-top: 40px;
+  }
+}

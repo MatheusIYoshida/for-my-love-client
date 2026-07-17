@@ -1,0 +1,139 @@
+.welcome-page {
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  padding: 32px 20px;
+  overflow: hidden;
+  color: #fffaf7;
+  background:
+    radial-gradient(circle at 18% 15%, rgba(200, 91, 114, 0.38), transparent 28rem),
+    radial-gradient(circle at 82% 8%, rgba(30, 215, 96, 0.16), transparent 18rem),
+    linear-gradient(145deg, #0d0c10 0%, #24141b 52%, #120d10 100%);
+
+  &__hearts {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  &__hearts span {
+    --heart-index: 0;
+    --heart-left: 50%;
+    --heart-delay: calc((var(--heart-index) * -0.55s));
+    --heart-duration: 8s;
+    --heart-size: 14px;
+    --heart-drift: 0px;
+
+    position: absolute;
+    top: -40px;
+    left: var(--heart-left);
+    width: var(--heart-size);
+    height: var(--heart-size);
+    opacity: 0;
+    transform: rotate(45deg);
+    animation: heart-rain var(--heart-duration) linear infinite;
+    animation-delay: var(--heart-delay);
+    background: rgba(255, 143, 169, 0.82);
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: inherit;
+    }
+
+    &::before {
+      left: -50%;
+    }
+
+    &::after {
+      top: -50%;
+    }
+  }
+
+  &__content {
+    width: min(100%, 620px);
+    margin: 0 auto;
+    text-align: center;
+    z-index: 1;
+  }
+
+  &__eyebrow {
+    margin: 0 0 16px;
+    color: rgba(255, 198, 211, 0.86);
+    font-family: "Segoe Script", "Bradley Hand ITC", "Comic Sans MS", cursive;
+    font-size: clamp(1.18rem, 4vw, 1.7rem);
+    font-weight: 600;
+    letter-spacing: 0;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: clamp(3.2rem, 13vw, 6.8rem);
+    line-height: 0.94;
+    letter-spacing: 0;
+  }
+
+  &__button {
+    display: inline-flex;
+    margin-top: 32px;
+    min-height: 56px;
+    align-items: center;
+    gap: 10px;
+    border: 0;
+    border-radius: 999px;
+    padding: 0 30px;
+    color: #06140a;
+    background: #1ed760;
+    box-shadow: 0 20px 42px rgba(30, 215, 96, 0.24);
+    font: inherit;
+    font-weight: 900;
+    text-decoration: none;
+    cursor: pointer;
+    &:focus-visible {
+      outline: 3px solid rgba(255, 250, 247, 0.9);
+      outline-offset: 4px;
+    }
+  }
+
+  &__button-icon {
+    width: 0;
+    height: 0;
+    border-top: 7px solid transparent;
+    border-bottom: 7px solid transparent;
+    border-left: 11px solid #06140a;
+  }
+
+}
+
+@keyframes heart-rain {
+  0% {
+    opacity: 0;
+    translate: 0 -12vh;
+    rotate: 0deg;
+  }
+
+  15% {
+    opacity: 0.82;
+  }
+
+  100% {
+    opacity: 0;
+    translate: var(--heart-drift) 112vh;
+    rotate: 180deg;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .welcome-page {
+    &__hearts span {
+      animation: none;
+      opacity: 0.18;
+      top: 18%;
+    }
+  }
+}
