@@ -1,14 +1,40 @@
 <main class="player-page" aria-label="Player do casal">
   <section class="player-page__shell">
     <header class="player-page__header">
-      <button class="player-page__icon" type="button" aria-label="Cartas">✉</button>
+      <button class="player-page__icon" type="button" aria-label="Cartas">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4 4h16v16H4V4Z"></path>
+          <path d="m22 6-10 7L2 6"></path>
+        </svg>
+      </button>
 
       <div class="player-page__header-copy">
         <span>Tocando da playlist</span>
         <strong>Nossa história</strong>
       </div>
 
-      <button class="player-page__icon" type="button" aria-label="Mais opções">⋮</button>
+      <div class="player-page__menu">
+        <button
+          class="player-page__icon"
+          type="button"
+          aria-label="Mais opções"
+          [attr.aria-expanded]="isMenuOpen()"
+          (click)="toggleMenu()"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="1"></circle>
+            <circle cx="12" cy="5" r="1"></circle>
+            <circle cx="12" cy="19" r="1"></circle>
+          </svg>
+        </button>
+
+        @if (isMenuOpen()) {
+          <div class="player-page__menu-list" aria-label="Opções do player">
+            <button class="player-page__menu-item" type="button" disabled>Em breve</button>
+            <a class="player-page__menu-item" routerLink="/">Sair</a>
+          </div>
+        }
+      </div>
     </header>
 
     <app-photo-carousel />
@@ -24,7 +50,11 @@
         <p class="player-page__song-artist">Jorge &amp; Mateus</p>
       </div>
 
-      <span class="player-page__saved" aria-label="Salvo">✓</span>
+      <span class="player-page__saved" aria-label="Salvo">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="m20 6-11 11-5-5"></path>
+        </svg>
+      </span>
     </section>
 
     <app-relationship-counter />
