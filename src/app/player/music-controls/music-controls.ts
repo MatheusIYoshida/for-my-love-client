@@ -24,7 +24,7 @@ export class MusicControls {
     return `${(this.currentTime() / duration) * 100}%`;
   });
 
-  protected toggleAudio(): void {
+  protected async toggleAudio(): Promise<void> {
     const audio = this.audioPlayer?.nativeElement;
 
     if (!audio) {
@@ -32,8 +32,13 @@ export class MusicControls {
     }
 
     if (audio.paused) {
-      void audio.play();
-      this.isPlaying.set(true);
+      try {
+        await audio.play();
+        this.isPlaying.set(true);
+      } catch {
+        this.isPlaying.set(false);
+      }
+
       return;
     }
 
