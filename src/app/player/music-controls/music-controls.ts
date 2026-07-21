@@ -16,12 +16,15 @@ export class MusicControls {
   protected readonly duration = signal(0);
   protected readonly progress = computed(() => {
     const duration = this.duration();
+    const currentTime = this.currentTime();
 
-    if (!duration) {
+    if (!Number.isFinite(duration) || duration <= 0) {
       return '0%';
     }
 
-    return `${(this.currentTime() / duration) * 100}%`;
+    const progress = Math.min(Math.max((currentTime / duration) * 100, 0), 100);
+
+    return `${progress}%`;
   });
 
   protected async toggleAudio(): Promise<void> {
@@ -72,7 +75,7 @@ export class MusicControls {
       return;
     }
 
-    this.duration.set(audio.duration || 0);
+    this.duration.set(Number.isFinite(audio.duration) ? audio.duration : 0);
   }
 
   protected updateCurrentTime(): void {
@@ -83,6 +86,10 @@ export class MusicControls {
     }
 
     this.currentTime.set(audio.currentTime);
+
+    if (!this.duration() && Number.isFinite(audio.duration)) {
+      this.duration.set(audio.duration);
+    }
   }
 
   protected handleAudioEnded(): void {

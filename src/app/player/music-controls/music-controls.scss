@@ -6,6 +6,8 @@
   }
 
   &__progress {
+    --music-progress: 0%;
+
     height: 5px;
     overflow: hidden;
     border-radius: 999px;
@@ -14,9 +16,10 @@
 
   &__progress span {
     display: block;
-    width: 42%;
+    width: var(--music-progress);
     height: 100%;
     background: #fffaf7;
+    transition: width 120ms linear;
   }
 
   &__time {

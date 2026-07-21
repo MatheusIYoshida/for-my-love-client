@@ -5,12 +5,13 @@
     src="assets/audio/Music.mp3"
     preload="metadata"
     (loadedmetadata)="updateDuration()"
+    (durationchange)="updateDuration()"
     (timeupdate)="updateCurrentTime()"
     (ended)="handleAudioEnded()"
   ></audio>
 
-  <div class="music-controls__progress">
-    <span [style.width]="progress()"></span>
+  <div class="music-controls__progress" [style.--music-progress]="progress()">
+    <span></span>
   </div>
 
   <div class="music-controls__time">
