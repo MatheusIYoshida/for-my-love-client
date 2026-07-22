@@ -1,3 +1,5 @@
+@use '../../../styles/variables' as variables;
+
 .photo-carousel {
   position: relative;
   aspect-ratio: 1;
@@ -5,9 +7,9 @@
   border-radius: 8px;
   touch-action: pan-y;
   background:
-    linear-gradient(145deg, rgba(255, 250, 247, 0.18), transparent 34%),
-    radial-gradient(circle at 35% 20%, #f3c77a 0 8%, transparent 25%),
-    linear-gradient(135deg, #c85b72 0%, #5c2431 44%, #151015 100%);
+    linear-gradient(145deg, variables.$color-text-18, transparent 34%),
+    radial-gradient(circle at 35% 20%, variables.$color-accent 0 8%, transparent 25%),
+    linear-gradient(135deg, variables.$color-primary-light 0%, variables.$color-primary 44%, variables.$color-surface 100%);
   box-shadow: 0 24px 70px rgba(0, 0, 0, 0.42);
 
   &__track {
@@ -27,15 +29,11 @@
     position: absolute;
     inset: 0;
     background:
-      linear-gradient(100deg, transparent 0%, rgba(255, 250, 247, 0.18) 48%, transparent 86%),
-      linear-gradient(145deg, rgba(255, 250, 247, 0.18), transparent 34%),
-      radial-gradient(circle at 35% 20%, #f3c77a 0 8%, transparent 25%),
-      linear-gradient(135deg, #c85b72 0%, #5c2431 44%, #151015 100%);
-    background-size:
-      220% 100%,
-      auto,
-      auto,
-      auto;
+      linear-gradient(100deg, transparent 0%, variables.$color-text-18 48%, transparent 86%),
+      linear-gradient(145deg, variables.$color-text-18, transparent 34%),
+      radial-gradient(circle at 35% 20%, variables.$color-accent 0 8%, transparent 25%),
+      linear-gradient(135deg, variables.$color-primary-light 0%, variables.$color-primary 44%, variables.$color-surface 100%);
+    background-size: 220% 100%, auto, auto, auto;
     animation: photo-carousel-shimmer 1500ms ease-in-out infinite;
   }
 
@@ -68,7 +66,7 @@
     padding: 0;
     border: 0;
     border-radius: 999px;
-    background: rgba(255, 250, 247, 0.44);
+    background: variables.$color-text-44;
     cursor: pointer;
     transition:
       width 180ms ease,
@@ -78,18 +76,18 @@
     &:hover,
     &:focus-visible {
       transform: scale(1.16);
-      background: rgba(255, 250, 247, 0.72);
+      background: variables.$color-text-72;
     }
 
     &:focus-visible {
-      outline: 2px solid rgba(255, 250, 247, 0.86);
+      outline: 2px solid variables.$color-focus-ring;
       outline-offset: 4px;
     }
   }
 
   &__dot--active {
     width: 22px;
-    background: #fffaf7;
+    background: variables.$color-text;
   }
 }
 
@@ -112,15 +110,13 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .photo-carousel {
-    &__track,
-    &__image,
-    &__dot {
-      transition: none;
-    }
+  .photo-carousel__track,
+  .photo-carousel__image,
+  .photo-carousel__dot {
+    transition: none;
+  }
 
-    &__placeholder {
-      animation: none;
-    }
+  .photo-carousel__placeholder {
+    animation: none;
   }
 }

@@ -1,17 +1,19 @@
+@use './styles/variables' as variables;
+
 * {
   box-sizing: border-box;
 }
 
 html {
   min-height: 100%;
-  background: #0d0c10;
+  background: variables.$color-background;
 }
 
 body {
   min-height: 100dvh;
   margin: 0;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: #0d0c10;
+  background: variables.$color-background;
 }
 
 button,

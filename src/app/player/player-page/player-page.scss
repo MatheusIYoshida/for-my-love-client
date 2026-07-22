@@ -1,10 +1,12 @@
+@use '../../../styles/variables' as variables;
+
 .player-page {
   min-height: 100dvh;
   padding: 20px 18px 36px;
-  color: #fffaf7;
+  color: variables.$color-text;
   background:
     radial-gradient(circle at 18% 0%, rgba(200, 91, 114, 0.5), transparent 24rem),
-    linear-gradient(180deg, #5c2431 0%, #21151d 46%, #0d0c10 100%);
+    linear-gradient(180deg, variables.$color-primary 0%, variables.$color-surface-soft 46%, variables.$color-background 100%);
 
   &__shell {
     width: min(100%, 430px);
@@ -22,7 +24,7 @@
 
   &__header-copy span {
     display: block;
-    color: rgba(255, 250, 247, 0.7);
+    color: variables.$color-text-70;
     font-size: 0.68rem;
     font-weight: 800;
     letter-spacing: 0.08em;
@@ -42,7 +44,7 @@
     place-items: center;
     border: 0;
     border-radius: 999px;
-    color: #fffaf7;
+    color: variables.$color-text;
     background: transparent;
     font: inherit;
     font-size: 1.45rem;
@@ -53,12 +55,12 @@
 
     &:hover,
     &:focus-visible {
-      background: rgba(255, 250, 247, 0.1);
+      background: variables.$color-text-10;
       transform: translateY(-1px);
     }
 
     &:focus-visible {
-      outline: 2px solid rgba(255, 250, 247, 0.86);
+      outline: 2px solid variables.$color-focus-ring;
       outline-offset: 3px;
     }
   }
@@ -84,7 +86,7 @@
     z-index: 2;
     width: 150px;
     overflow: hidden;
-    border: 1px solid rgba(255, 250, 247, 0.14);
+    border: 1px solid variables.$color-text-14;
     border-radius: 8px;
     background: rgba(21, 16, 21, 0.96);
     box-shadow: 0 18px 44px rgba(0, 0, 0, 0.34);
@@ -96,7 +98,7 @@
     width: 100%;
     border: 0;
     padding: 12px 14px;
-    color: #fffaf7;
+    color: variables.$color-text;
     background: transparent;
     font: inherit;
     font-size: 0.92rem;
@@ -109,18 +111,18 @@
       color 160ms ease;
 
     &:disabled {
-      color: rgba(255, 250, 247, 0.48);
+      color: variables.$color-text-48;
       cursor: default;
     }
 
     &:focus-visible {
-      outline: 2px solid rgba(255, 250, 247, 0.86);
+      outline: 2px solid variables.$color-focus-ring;
       outline-offset: -4px;
     }
   }
 
   &__menu-item:not(:disabled):hover {
-    background: rgba(255, 250, 247, 0.08);
+    background: variables.$color-text-08;
   }
 
   &__song {
@@ -148,7 +150,7 @@
 
   &__song-artist {
     margin: 0;
-    color: rgba(255, 250, 247, 0.72);
+    color: variables.$color-text-72;
     font-size: 0.95rem;
   }
 
@@ -160,8 +162,8 @@
     place-items: center;
     margin-bottom: 13px;
     border-radius: 999px;
-    color: #06140a;
-    background: #1ed760;
+    color: variables.$color-spotify-text;
+    background: variables.$color-spotify;
     font-size: 1rem;
     font-weight: 900;
   }
@@ -196,14 +198,12 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .player-page {
-    &__icon,
-    &__menu-item {
-      transition: none;
-    }
+  .player-page__icon,
+  .player-page__menu-item {
+    transition: none;
+  }
 
-    &__menu-list {
-      animation: none;
-    }
+  .player-page__menu-list {
+    animation: none;
   }
 }
