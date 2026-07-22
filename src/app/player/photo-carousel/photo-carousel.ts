@@ -28,6 +28,7 @@ export class PhotoCarousel implements OnDestroy {
   ];
 
   protected readonly currentPhotoIndex = signal(0);
+  protected readonly loadedPhotoIndexes = signal<ReadonlySet<number>>(new Set());
   protected readonly translateX = computed(() => `translateX(-${this.currentPhotoIndex() * 100}%)`);
   private readonly swipeThreshold = 48;
   private autoplayIntervalId = window.setInterval(() => this.goToNextPhoto(), 4200);
@@ -64,6 +65,14 @@ export class PhotoCarousel implements OnDestroy {
     }
 
     this.goToNextPhoto();
+  }
+
+  protected isPhotoLoaded(index: number): boolean {
+    return this.loadedPhotoIndexes().has(index);
+  }
+
+  protected markPhotoAsLoaded(index: number): void {
+    this.loadedPhotoIndexes.update((loadedPhotoIndexes) => new Set(loadedPhotoIndexes).add(index));
   }
 
   private goToNextPhoto(): void {

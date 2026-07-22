@@ -6,8 +6,20 @@
   (pointercancel)="handlePointerEnd($event)"
 >
   <div class="photo-carousel__track" [style.transform]="translateX()">
-    @for (photo of photos; track photo.src) {
-      <img class="photo-carousel__image" [src]="photo.src" [alt]="photo.alt">
+    @for (photo of photos; track photo.src; let index = $index) {
+      <div class="photo-carousel__slide">
+        @if (!isPhotoLoaded(index)) {
+          <div class="photo-carousel__placeholder" aria-hidden="true"></div>
+        }
+
+        <img
+          class="photo-carousel__image"
+          [class.photo-carousel__image--loaded]="isPhotoLoaded(index)"
+          [src]="photo.src"
+          [alt]="photo.alt"
+          (load)="markPhotoAsLoaded(index)"
+        >
+      </div>
     }
   </div>
 

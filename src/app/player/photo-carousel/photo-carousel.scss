@@ -16,10 +16,40 @@
     transition: transform 520ms ease;
   }
 
-  &__image {
+  &__slide {
+    position: relative;
     min-width: 100%;
     height: 100%;
+    overflow: hidden;
+  }
+
+  &__placeholder {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(100deg, transparent 0%, rgba(255, 250, 247, 0.18) 48%, transparent 86%),
+      linear-gradient(145deg, rgba(255, 250, 247, 0.18), transparent 34%),
+      radial-gradient(circle at 35% 20%, #f3c77a 0 8%, transparent 25%),
+      linear-gradient(135deg, #c85b72 0%, #5c2431 44%, #151015 100%);
+    background-size:
+      220% 100%,
+      auto,
+      auto,
+      auto;
+    animation: photo-carousel-shimmer 1500ms ease-in-out infinite;
+  }
+
+  &__image {
+    position: relative;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
+    opacity: 0;
+    transition: opacity 360ms ease;
+  }
+
+  &__image--loaded {
+    opacity: 1;
   }
 
   &__dots {
@@ -42,11 +72,55 @@
     cursor: pointer;
     transition:
       width 180ms ease,
-      background 180ms ease;
+      background 180ms ease,
+      transform 180ms ease;
+
+    &:hover,
+    &:focus-visible {
+      transform: scale(1.16);
+      background: rgba(255, 250, 247, 0.72);
+    }
+
+    &:focus-visible {
+      outline: 2px solid rgba(255, 250, 247, 0.86);
+      outline-offset: 4px;
+    }
   }
 
   &__dot--active {
     width: 22px;
     background: #fffaf7;
+  }
+}
+
+@keyframes photo-carousel-shimmer {
+  0% {
+    background-position:
+      120% 0,
+      0 0,
+      0 0,
+      0 0;
+  }
+
+  100% {
+    background-position:
+      -120% 0,
+      0 0,
+      0 0,
+      0 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .photo-carousel {
+    &__track,
+    &__image,
+    &__dot {
+      transition: none;
+    }
+
+    &__placeholder {
+      animation: none;
+    }
   }
 }
