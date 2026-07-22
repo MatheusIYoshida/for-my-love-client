@@ -198,14 +198,12 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .player-page {
-    &__icon,
-    &__menu-item {
-      transition: none;
-    }
+  .player-page__icon,
+  .player-page__menu-item {
+    transition: none;
+  }
 
-    &__menu-list {
-      animation: none;
-    }
+  .player-page__menu-list {
+    animation: none;
   }
 }

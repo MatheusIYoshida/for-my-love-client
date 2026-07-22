@@ -131,11 +131,9 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .welcome-page {
-    &__hearts span {
-      animation: none;
-      opacity: 0.18;
-      top: 18%;
-    }
+  .welcome-page__hearts span {
+    animation: none;
+    opacity: 0.18;
+    top: 18%;
   }
 }

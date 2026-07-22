@@ -110,15 +110,13 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .photo-carousel {
-    &__track,
-    &__image,
-    &__dot {
-      transition: none;
-    }
+  .photo-carousel__track,
+  .photo-carousel__image,
+  .photo-carousel__dot {
+    transition: none;
+  }
 
-    &__placeholder {
-      animation: none;
-    }
+  .photo-carousel__placeholder {
+    animation: none;
   }
 }

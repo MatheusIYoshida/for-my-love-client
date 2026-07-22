@@ -142,52 +142,13 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .music-controls {
-    &__progress span,
-    &__item,
-    &__item--main {
-      transition: none;
-    }
-
-    &__loader {
-      animation: none;
-    }
+  .music-controls__progress span,
+  .music-controls__item,
+  .music-controls__item--main {
+    transition: none;
   }
 
-  &__loader {
-    width: 26px;
-    height: 26px;
-    border: 3px solid rgba(13, 12, 16, 0.22);
-    border-top-color: #0d0c10;
-    border-radius: 999px;
-    animation: music-controls-spin 720ms linear infinite;
-  }
-
-  &__feedback {
-    margin: 14px 0 0;
-    color: rgba(255, 250, 247, 0.74);
-    font-size: 0.84rem;
-    font-weight: 700;
-    text-align: center;
-  }
-}
-
-@keyframes music-controls-spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .music-controls {
-    &__progress span,
-    &__item,
-    &__item--main {
-      transition: none;
-    }
-
-    &__loader {
-      animation: none;
-    }
+  .music-controls__loader {
+    animation: none;
   }
 }
