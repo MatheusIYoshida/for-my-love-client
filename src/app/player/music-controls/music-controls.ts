@@ -12,8 +12,11 @@ export class MusicControls {
 
   protected readonly isPlaying = signal(false);
   protected readonly isLooping = signal(false);
+  protected readonly isAudioLoading = signal(false);
+  protected readonly hasAudioError = signal(false);
   protected readonly currentTime = signal(0);
   protected readonly duration = signal(0);
+  protected readonly canSeek = computed(() => !this.hasAudioError() && this.duration() > 0);
   protected readonly progress = computed(() => {
     const duration = this.duration();
     const currentTime = this.currentTime();
@@ -30,16 +33,21 @@ export class MusicControls {
   protected async toggleAudio(): Promise<void> {
     const audio = this.audioPlayer?.nativeElement;
 
-    if (!audio) {
+    if (!audio || this.hasAudioError() || this.isAudioLoading()) {
       return;
     }
 
     if (audio.paused) {
       try {
+        this.isAudioLoading.set(true);
+        this.hasAudioError.set(false);
         await audio.play();
         this.isPlaying.set(true);
       } catch {
         this.isPlaying.set(false);
+        this.hasAudioError.set(true);
+      } finally {
+        this.isAudioLoading.set(false);
       }
 
       return;
@@ -60,7 +68,7 @@ export class MusicControls {
   protected toggleLoop(): void {
     const audio = this.audioPlayer?.nativeElement;
 
-    if (!audio) {
+    if (!audio || this.hasAudioError()) {
       return;
     }
 
@@ -76,6 +84,12 @@ export class MusicControls {
     }
 
     this.duration.set(Number.isFinite(audio.duration) ? audio.duration : 0);
+    this.hasAudioError.set(false);
+  }
+
+  protected handleAudioReady(): void {
+    this.isAudioLoading.set(false);
+    this.hasAudioError.set(false);
   }
 
   protected updateCurrentTime(): void {
@@ -94,13 +108,22 @@ export class MusicControls {
 
   protected handleAudioEnded(): void {
     this.isPlaying.set(false);
+    this.isAudioLoading.set(false);
     this.currentTime.set(0);
+  }
+
+  protected handleAudioError(): void {
+    this.isPlaying.set(false);
+    this.isAudioLoading.set(false);
+    this.hasAudioError.set(true);
+    this.currentTime.set(0);
+    this.duration.set(0);
   }
 
   private seekBy(seconds: number): void {
     const audio = this.audioPlayer?.nativeElement;
 
-    if (!audio) {
+    if (!audio || !this.canSeek()) {
       return;
     }
 

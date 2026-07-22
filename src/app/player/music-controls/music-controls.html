@@ -5,9 +5,11 @@
     src="assets/audio/Music.mp3"
     preload="metadata"
     (loadedmetadata)="updateDuration()"
+    (canplay)="handleAudioReady()"
     (durationchange)="updateDuration()"
     (timeupdate)="updateCurrentTime()"
     (ended)="handleAudioEnded()"
+    (error)="handleAudioError()"
   ></audio>
 
   <div class="music-controls__progress" [style.--music-progress]="progress()">
@@ -30,7 +32,13 @@
       </svg>
     </button>
 
-    <button class="music-controls__item" type="button" aria-label="Voltar 10 segundos" (click)="seekBackward()">
+    <button
+      class="music-controls__item"
+      type="button"
+      aria-label="Voltar 10 segundos"
+      [disabled]="!canSeek()"
+      (click)="seekBackward()"
+    >
       <svg viewBox="0 0 24 24" aria-hidden="true">
         <path d="m11 19-9-7 9-7v14Z"></path>
         <path d="m22 19-9-7 9-7v14Z"></path>
@@ -41,9 +49,12 @@
       class="music-controls__item music-controls__item--main"
       type="button"
       [attr.aria-label]="isPlaying() ? 'Pausar música' : 'Tocar música'"
+      [disabled]="hasAudioError() || isAudioLoading()"
       (click)="toggleAudio()"
     >
-      @if (isPlaying()) {
+      @if (isAudioLoading()) {
+        <span class="music-controls__loader" aria-hidden="true"></span>
+      } @else if (isPlaying()) {
         <svg viewBox="0 0 24 24" aria-hidden="true">
           <path d="M10 4H6v16h4V4Z"></path>
           <path d="M18 4h-4v16h4V4Z"></path>
@@ -55,7 +66,13 @@
       }
     </button>
 
-    <button class="music-controls__item" type="button" aria-label="Avançar 10 segundos" (click)="seekForward()">
+    <button
+      class="music-controls__item"
+      type="button"
+      aria-label="Avançar 10 segundos"
+      [disabled]="!canSeek()"
+      (click)="seekForward()"
+    >
       <svg viewBox="0 0 24 24" aria-hidden="true">
         <path d="m13 19 9-7-9-7v14Z"></path>
         <path d="m2 19 9-7-9-7v14Z"></path>
@@ -67,6 +84,7 @@
       [class.music-controls__item--active]="isLooping()"
       type="button"
       aria-label="Repetir música"
+      [disabled]="hasAudioError()"
       (click)="toggleLoop()"
     >
       <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -77,4 +95,8 @@
       </svg>
     </button>
   </div>
+
+  @if (hasAudioError()) {
+    <p class="music-controls__feedback">Não consegui carregar a música agora.</p>
+  }
 </section>
