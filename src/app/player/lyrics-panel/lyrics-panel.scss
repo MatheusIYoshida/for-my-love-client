@@ -1,8 +1,10 @@
+@use '../../../styles/variables' as variables;
+
 .lyrics-panel {
   margin-top: 16px;
   padding: 22px;
   border-radius: 8px;
-  background: linear-gradient(145deg, #a93255 0%, #6f293d 100%);
+  background: linear-gradient(145deg, variables.$color-primary-strong 0%, variables.$color-primary-soft 100%);
 
   &__title {
     margin: 0 0 18px;
@@ -11,7 +13,7 @@
 
   &__text {
     margin: 0;
-    color: rgba(255, 250, 247, 0.9);
+    color: variables.$color-text-90;
     font-size: 1rem;
     font-weight: 700;
     line-height: 1.55;
