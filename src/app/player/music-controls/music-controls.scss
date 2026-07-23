@@ -62,7 +62,6 @@
       cursor: default;
     }
 
-    &:not(:disabled):hover,
     &:not(:disabled):focus-visible {
       background: variables.$color-text-08;
       transform: translateY(-1px);
@@ -71,6 +70,11 @@
     &:focus-visible {
       outline: 2px solid variables.$color-focus-ring;
       outline-offset: 4px;
+    }
+
+    &:not(:disabled):active {
+      background: variables.$color-text-08;
+      transform: translateY(0);
     }
   }
 
@@ -105,11 +109,16 @@
       stroke: none;
     }
 
-    &:not(:disabled):hover,
     &:not(:disabled):focus-visible {
       background: variables.$color-white;
       box-shadow: 0 10px 28px variables.$color-text-22;
       transform: scale(1.04);
+    }
+
+    &:not(:disabled):active {
+      background: variables.$color-white;
+      box-shadow: 0 8px 22px variables.$color-text-22;
+      transform: scale(0.98);
     }
   }
 
@@ -132,6 +141,19 @@
     font-size: 0.84rem;
     font-weight: 700;
     text-align: center;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .music-controls__item:not(:disabled):hover {
+    background: variables.$color-text-08;
+    transform: translateY(-1px);
+  }
+
+  .music-controls__item--main:not(:disabled):hover {
+    background: variables.$color-white;
+    box-shadow: 0 10px 28px variables.$color-text-22;
+    transform: scale(1.04);
   }
 }
 
