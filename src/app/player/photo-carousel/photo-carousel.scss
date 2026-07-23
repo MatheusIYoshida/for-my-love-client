@@ -73,7 +73,6 @@
       background 180ms ease,
       transform 180ms ease;
 
-    &:hover,
     &:focus-visible {
       transform: scale(1.16);
       background: variables.$color-text-72;
@@ -83,11 +82,23 @@
       outline: 2px solid variables.$color-focus-ring;
       outline-offset: 4px;
     }
+
+    &:active {
+      transform: scale(1.08);
+      background: variables.$color-text-72;
+    }
   }
 
   &__dot--active {
     width: 22px;
     background: variables.$color-text;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .photo-carousel__dot:hover {
+    transform: scale(1.16);
+    background: variables.$color-text-72;
   }
 }
 

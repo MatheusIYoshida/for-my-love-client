@@ -53,7 +53,6 @@
       background 180ms ease,
       transform 180ms ease;
 
-    &:hover,
     &:focus-visible {
       background: variables.$color-text-10;
       transform: translateY(-1px);
@@ -62,6 +61,11 @@
     &:focus-visible {
       outline: 2px solid variables.$color-focus-ring;
       outline-offset: 3px;
+    }
+
+    &:active {
+      background: variables.$color-text-10;
+      transform: translateY(0);
     }
   }
 
@@ -121,7 +125,7 @@
     }
   }
 
-  &__menu-item:not(:disabled):hover {
+  &__menu-item:not(:disabled):active {
     background: variables.$color-text-08;
   }
 
@@ -176,6 +180,17 @@
     stroke-linecap: round;
     stroke-linejoin: round;
     stroke-width: 3;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .player-page__icon:hover {
+    background: variables.$color-text-10;
+    transform: translateY(-1px);
+  }
+
+  .player-page__menu-item:not(:disabled):hover {
+    background: variables.$color-text-08;
   }
 }
 
