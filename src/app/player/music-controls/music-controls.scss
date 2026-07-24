@@ -157,6 +157,37 @@
   }
 }
 
+@media (hover: none), (pointer: coarse) {
+  .music-controls__item {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .music-controls__item:focus,
+  .music-controls__item:focus-visible {
+    background: transparent;
+    outline: none;
+    transform: none;
+  }
+
+  .music-controls__item:not(:disabled):active {
+    background: variables.$color-text-08;
+    transform: scale(0.96);
+  }
+
+  .music-controls__item--main:focus,
+  .music-controls__item--main:focus-visible {
+    background: variables.$color-text;
+    box-shadow: none;
+    transform: none;
+  }
+
+  .music-controls__item--main:not(:disabled):active {
+    background: variables.$color-white;
+    box-shadow: 0 8px 22px variables.$color-text-22;
+    transform: scale(0.96);
+  }
+}
+
 @keyframes music-controls-spin {
   to {
     transform: rotate(360deg);
