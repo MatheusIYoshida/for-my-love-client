@@ -102,6 +102,29 @@
   }
 }
 
+@media (hover: none), (pointer: coarse) {
+  .photo-carousel__dot {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .photo-carousel__dot:focus,
+  .photo-carousel__dot:focus-visible {
+    background: variables.$color-text-44;
+    outline: none;
+    transform: none;
+  }
+
+  .photo-carousel__dot--active:focus,
+  .photo-carousel__dot--active:focus-visible {
+    background: variables.$color-text;
+  }
+
+  .photo-carousel__dot:active {
+    background: variables.$color-text-72;
+    transform: scale(1.08);
+  }
+}
+
 @keyframes photo-carousel-shimmer {
   0% {
     background-position:

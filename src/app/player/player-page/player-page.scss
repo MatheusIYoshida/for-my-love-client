@@ -194,6 +194,35 @@
   }
 }
 
+@media (hover: none), (pointer: coarse) {
+  .player-page__icon,
+  .player-page__menu-item {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .player-page__icon:focus,
+  .player-page__icon:focus-visible {
+    background: transparent;
+    outline: none;
+    transform: none;
+  }
+
+  .player-page__icon:active {
+    background: variables.$color-text-10;
+    transform: scale(0.96);
+  }
+
+  .player-page__menu-item:focus,
+  .player-page__menu-item:focus-visible {
+    background: transparent;
+    outline: none;
+  }
+
+  .player-page__menu-item:not(:disabled):active {
+    background: variables.$color-text-08;
+  }
+}
+
 @keyframes player-menu-in {
   from {
     opacity: 0;
