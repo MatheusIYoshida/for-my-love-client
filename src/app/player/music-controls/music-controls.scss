@@ -45,8 +45,11 @@
     display: grid;
     place-items: center;
     border: 0;
+    padding: 0;
     color: variables.$color-text;
     background: transparent;
+    appearance: none;
+    -webkit-appearance: none;
     font: inherit;
     font-size: 1.55rem;
     cursor: pointer;
@@ -79,8 +82,10 @@
   }
 
   &__item svg {
+    display: block;
     width: 24px;
     height: 24px;
+    margin: auto;
     fill: none;
     stroke: currentColor;
     stroke-linecap: round;
