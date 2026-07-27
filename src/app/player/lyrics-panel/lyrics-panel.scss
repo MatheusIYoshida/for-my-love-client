@@ -1,27 +1,52 @@
 @use '../../../styles/variables' as variables;
 
 .lyrics-panel {
-  margin-top: 16px;
-  padding: 22px;
+  margin-top: 14px;
+  padding: 18px;
   border-radius: 8px;
   background: linear-gradient(145deg, variables.$color-primary-strong 0%, variables.$color-primary-soft 100%);
 
   &__title {
-    margin: 0 0 18px;
-    font-size: 1.5rem;
+    margin: 0 0 14px;
+    font-size: 1.28rem;
+    line-height: 1.15;
   }
 
   &__text {
     margin: 0;
     color: variables.$color-text-90;
-    font-size: 1rem;
+    font-size: 0.96rem;
     font-weight: 700;
-    line-height: 1.55;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
   }
 
   &__ending {
     display: block;
-    margin-top: 18px;
-    font-size: 1.2rem;
+    margin-top: 16px;
+    font-size: 1.08rem;
+    line-height: 1.25;
+  }
+}
+
+@media (min-width: 720px) {
+  .lyrics-panel {
+    margin-top: 16px;
+    padding: 22px;
+
+    &__title {
+      margin-bottom: 18px;
+      font-size: 1.5rem;
+    }
+
+    &__text {
+      font-size: 1rem;
+      line-height: 1.55;
+    }
+
+    &__ending {
+      margin-top: 18px;
+      font-size: 1.2rem;
+    }
   }
 }

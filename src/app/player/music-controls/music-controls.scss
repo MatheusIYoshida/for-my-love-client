@@ -1,7 +1,7 @@
 @use '../../../styles/variables' as variables;
 
 .music-controls {
-  padding: 24px 0 18px;
+  padding: 20px 0 16px;
 
   &__audio {
     display: none;
@@ -27,21 +27,25 @@
   &__time {
     display: flex;
     justify-content: space-between;
+    gap: 12px;
     margin-top: 8px;
     color: variables.$color-text-68;
-    font-size: 0.82rem;
+    font-size: 0.78rem;
+    line-height: 1.2;
   }
 
   &__actions {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     align-items: center;
-    gap: 8px;
-    margin-top: 20px;
+    gap: 4px;
+    margin-top: 18px;
   }
 
   &__item {
-    min-height: 48px;
+    width: 100%;
+    min-width: 0;
+    min-height: 44px;
     display: grid;
     place-items: center;
     border: 0;
@@ -79,8 +83,8 @@
   }
 
   &__item svg {
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
     fill: none;
     stroke: currentColor;
     stroke-linecap: round;
@@ -89,8 +93,8 @@
   }
 
   &__item--main {
-    width: 72px;
-    height: 72px;
+    width: clamp(58px, 18vw, 72px);
+    height: clamp(58px, 18vw, 72px);
     justify-self: center;
     border-radius: 999px;
     color: variables.$color-background;
@@ -103,8 +107,8 @@
       transform 180ms ease;
 
     svg {
-      width: 30px;
-      height: 30px;
+      width: 28px;
+      height: 28px;
       fill: currentColor;
       stroke: none;
     }
@@ -127,8 +131,8 @@
   }
 
   &__loader {
-    width: 26px;
-    height: 26px;
+    width: 24px;
+    height: 24px;
     border: 3px solid rgba(13, 12, 16, 0.22);
     border-top-color: variables.$color-background;
     border-radius: 999px;
@@ -136,11 +140,50 @@
   }
 
   &__feedback {
-    margin: 14px 0 0;
+    margin: 12px 0 0;
     color: variables.$color-text-74;
     font-size: 0.84rem;
     font-weight: 700;
     text-align: center;
+  }
+}
+
+@media (min-width: 720px) {
+  .music-controls {
+    padding: 24px 0 18px;
+
+    &__time {
+      font-size: 0.82rem;
+    }
+
+    &__actions {
+      gap: 8px;
+      margin-top: 20px;
+    }
+
+    &__item {
+      min-height: 48px;
+    }
+
+    &__item svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    &__item--main {
+      width: 72px;
+      height: 72px;
+
+      svg {
+        width: 30px;
+        height: 30px;
+      }
+    }
+
+    &__loader {
+      width: 26px;
+      height: 26px;
+    }
   }
 }
 
