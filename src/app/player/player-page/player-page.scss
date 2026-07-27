@@ -1,12 +1,11 @@
 @use '../../../styles/variables' as variables;
 
 .player-page {
-  min-height: 100dvh;
-  padding: 20px 18px 36px;
+  min-height: 100svh;
+  padding: max(14px, env(safe-area-inset-top)) 14px max(28px, env(safe-area-inset-bottom));
   color: variables.$color-text;
   background:
-    radial-gradient(circle at 18% 0%, rgba(200, 91, 114, 0.5), transparent 24rem),
-    linear-gradient(180deg, variables.$color-primary 0%, variables.$color-surface-soft 46%, variables.$color-background 100%);
+    linear-gradient(180deg, variables.$color-primary 0%, variables.$color-surface-soft 38%, variables.$color-background 100%);
 
   &__shell {
     width: min(100%, 430px);
@@ -15,17 +14,17 @@
 
   &__header {
     display: grid;
-    grid-template-columns: 44px 1fr 44px;
+    grid-template-columns: 44px minmax(0, 1fr) 44px;
     align-items: center;
-    gap: 6px;
-    margin-bottom: 18px;
+    gap: 4px;
+    margin-bottom: 14px;
     text-align: center;
   }
 
   &__header-copy span {
     display: block;
     color: variables.$color-text-70;
-    font-size: 0.68rem;
+    font-size: 0.64rem;
     font-weight: 800;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -34,7 +33,10 @@
   &__header-copy strong {
     display: block;
     margin-top: 4px;
-    font-size: 1rem;
+    overflow: hidden;
+    font-size: 0.95rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   &__icon {
@@ -133,22 +135,28 @@
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
-    gap: 18px;
-    padding: 26px 0 18px;
+    gap: 14px;
+    padding: 20px 0 16px;
+  }
+
+  &__song-copy {
+    min-width: 0;
   }
 
   &__song-line {
-    margin: 0 0 8px;
-    font-size: 0.96rem;
+    margin: 0 0 7px;
+    color: variables.$color-text-90;
+    font-size: 0.9rem;
     font-weight: 700;
-    line-height: 1.35;
+    line-height: 1.32;
   }
 
   &__song-title {
     margin: 0 0 4px;
-    font-size: clamp(1.85rem, 10vw, 2.55rem);
+    overflow-wrap: anywhere;
+    font-size: clamp(1.72rem, 9vw, 2.28rem);
     font-weight: 800;
-    line-height: 0.96;
+    line-height: 1;
     letter-spacing: 0;
   }
 
@@ -160,11 +168,11 @@
 
   &__saved {
     flex: 0 0 auto;
-    width: 30px;
-    height: 30px;
+    width: 28px;
+    height: 28px;
     display: grid;
     place-items: center;
-    margin-bottom: 13px;
+    margin-bottom: 10px;
     border-radius: 999px;
     color: variables.$color-spotify-text;
     background: variables.$color-spotify;
@@ -235,9 +243,49 @@
   }
 }
 
-@media (min-width: 900px) {
+@media (min-width: 720px) {
   .player-page {
-    padding-top: 40px;
+    min-height: 100dvh;
+    padding: 40px 24px;
+
+    &__shell {
+      width: min(100%, 430px);
+    }
+
+    &__header {
+      gap: 6px;
+      margin-bottom: 18px;
+    }
+
+    &__header-copy span {
+      font-size: 0.68rem;
+    }
+
+    &__header-copy strong {
+      font-size: 1rem;
+    }
+
+    &__song {
+      gap: 18px;
+      padding: 26px 0 18px;
+    }
+
+    &__song-line {
+      margin-bottom: 8px;
+      font-size: 0.96rem;
+      line-height: 1.35;
+    }
+
+    &__song-title {
+      font-size: clamp(1.85rem, 6vw, 2.55rem);
+      line-height: 0.96;
+    }
+
+    &__saved {
+      width: 30px;
+      height: 30px;
+      margin-bottom: 13px;
+    }
   }
 }
 

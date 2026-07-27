@@ -1,16 +1,15 @@
 @use '../../../styles/variables' as variables;
 
 .welcome-page {
-  min-height: 100dvh;
+  min-height: 100svh;
   display: grid;
   place-items: center;
-  padding: 32px 20px;
+  padding: max(24px, env(safe-area-inset-top)) 18px max(28px, env(safe-area-inset-bottom));
   overflow: hidden;
   color: variables.$color-text;
   background:
-    radial-gradient(circle at 18% 15%, rgba(200, 91, 114, 0.38), transparent 28rem),
-    radial-gradient(circle at 82% 8%, rgba(30, 215, 96, 0.16), transparent 18rem),
-    linear-gradient(145deg, variables.$color-background 0%, #24141b 52%, #120d10 100%);
+    linear-gradient(180deg, rgba(92, 36, 49, 0.88) 0%, rgba(33, 21, 29, 0.92) 42%, variables.$color-background 100%),
+    variables.$color-background;
 
   &__hearts {
     position: fixed;
@@ -58,31 +57,33 @@
   }
 
   &__content {
-    width: min(100%, 620px);
+    width: min(100%, 360px);
     margin: 0 auto;
     text-align: center;
     z-index: 1;
   }
 
   &__eyebrow {
-    margin: 0 0 16px;
+    margin: 0 0 14px;
     color: rgba(255, 198, 211, 0.86);
     font-family: "Segoe Script", "Bradley Hand ITC", "Comic Sans MS", cursive;
-    font-size: clamp(1.18rem, 4vw, 1.7rem);
+    font-size: clamp(1.08rem, 5vw, 1.32rem);
     font-weight: 600;
     letter-spacing: 0;
   }
 
   &__title {
     margin: 0;
-    font-size: clamp(3.2rem, 13vw, 6.8rem);
-    line-height: 0.94;
+    font-size: clamp(2.78rem, 15vw, 4.3rem);
+    line-height: 0.98;
     letter-spacing: 0;
   }
 
   &__button {
+    width: min(100%, 220px);
     display: inline-flex;
-    margin-top: 32px;
+    justify-content: center;
+    margin-top: 30px;
     min-height: 56px;
     align-items: center;
     gap: 10px;
@@ -96,6 +97,7 @@
     font-weight: 900;
     text-decoration: none;
     cursor: pointer;
+
     &:focus-visible {
       outline: 3px solid variables.$color-focus-ring-strong;
       outline-offset: 4px;
@@ -110,6 +112,34 @@
     border-left: 11px solid variables.$color-spotify-text;
   }
 
+}
+
+@media (min-width: 720px) {
+  .welcome-page {
+    min-height: 100dvh;
+    padding: 40px 24px;
+    background:
+      linear-gradient(145deg, variables.$color-background 0%, #24141b 52%, #120d10 100%);
+
+    &__content {
+      width: min(100%, 620px);
+    }
+
+    &__eyebrow {
+      margin-bottom: 16px;
+      font-size: clamp(1.28rem, 3vw, 1.7rem);
+    }
+
+    &__title {
+      font-size: clamp(4.2rem, 8vw, 6.8rem);
+      line-height: 0.94;
+    }
+
+    &__button {
+      width: auto;
+      margin-top: 32px;
+    }
+  }
 }
 
 @keyframes heart-rain {

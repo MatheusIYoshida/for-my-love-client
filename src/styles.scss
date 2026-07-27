@@ -4,16 +4,30 @@
   box-sizing: border-box;
 }
 
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
 html {
+  width: 100%;
   min-height: 100%;
   background: variables.$color-background;
+  color-scheme: dark;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
+  width: 100%;
   min-height: 100dvh;
   margin: 0;
+  overflow-x: hidden;
+  color: variables.$color-text;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   background: variables.$color-background;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
 button,
@@ -21,4 +35,35 @@ input,
 textarea,
 select {
   font: inherit;
+}
+
+button,
+a {
+  touch-action: manipulation;
+}
+
+button {
+  color: inherit;
+}
+
+img,
+picture,
+svg,
+video,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline-color: variables.$color-focus-ring;
+}
+
+::selection {
+  color: variables.$color-spotify-text;
+  background: variables.$color-spotify;
 }

@@ -10,7 +10,7 @@
     linear-gradient(145deg, variables.$color-text-18, transparent 34%),
     radial-gradient(circle at 35% 20%, variables.$color-accent 0 8%, transparent 25%),
     linear-gradient(135deg, variables.$color-primary-light 0%, variables.$color-primary 44%, variables.$color-surface 100%);
-  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.42);
+  box-shadow: 0 18px 52px rgba(0, 0, 0, 0.38);
 
   &__track {
     display: flex;
@@ -53,7 +53,7 @@
   &__dots {
     position: absolute;
     right: 0;
-    bottom: 14px;
+    bottom: 12px;
     left: 0;
     display: flex;
     justify-content: center;
@@ -92,6 +92,16 @@
   &__dot--active {
     width: 22px;
     background: variables.$color-text;
+  }
+}
+
+@media (min-width: 720px) {
+  .photo-carousel {
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.42);
+
+    &__dots {
+      bottom: 14px;
+    }
   }
 }
 
