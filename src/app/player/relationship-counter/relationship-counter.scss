@@ -1,7 +1,7 @@
 @use '../../../styles/variables' as variables;
 
 .relationship-counter {
-  padding: 16px;
+  padding: 14px;
   border: 1px solid variables.$color-text-16;
   border-radius: 8px;
   background: variables.$color-text-08;
@@ -17,14 +17,33 @@
 
   &__time {
     display: block;
-    margin-top: 8px;
-    font-size: 1.24rem;
+    margin-top: 7px;
+    overflow-wrap: anywhere;
+    font-size: clamp(1.04rem, 5vw, 1.24rem);
     font-weight: 900;
     line-height: 1.25;
   }
 
   &__detail {
-    margin: 8px 0 0;
+    margin: 7px 0 0;
     color: variables.$color-text-68;
+    font-size: 0.92rem;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+  }
+}
+
+@media (min-width: 720px) {
+  .relationship-counter {
+    padding: 16px;
+
+    &__time {
+      margin-top: 8px;
+    }
+
+    &__detail {
+      margin-top: 8px;
+      font-size: 1rem;
+    }
   }
 }
