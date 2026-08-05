@@ -45,9 +45,12 @@
     display: grid;
     place-items: center;
     border: 0;
+    padding: 0;
     border-radius: 999px;
     color: variables.$color-text;
     background: transparent;
+    appearance: none;
+    -webkit-appearance: none;
     font: inherit;
     font-size: 1.45rem;
     cursor: pointer;
